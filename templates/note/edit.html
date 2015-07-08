@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <form method="POST" id="form" action="{{ url_for('note-save-id', note_id=note.id) if note else url_for('note-save') }}">
+        <div class="form-group">
+            <label for="source">Source</label>
+            <textarea name="source" id="source" class="form-control" rows="5">{{ note.source|default() }}</textarea>
+        </div>
+        {% for source_type_id, source_type_title in types.items() %}
+            <div class="radio">
+                <label>
+                    <input type="radio" name="source_type"
+                           id="source_type{{ source_type_id }}" value="{{ source_type_id }}"
+                            {{ 'checked' if note.source_type == source_type_id }}
+                    >
+                    {{ source_type_title }}
+                </label>
+            </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+{% endblock content %}

@@ -1,0 +1,13 @@
+.note {
+    padding: 10px;
+}
+
+.note-links:not(:last-child):after {
+    height: 15px;
+    width: 266px;
+    display: block;
+    background-image: url("/build/img/horizontal-delimiter.png");
+    position: relative;
+    left: 50%;
+    margin-left: -133px;
+}

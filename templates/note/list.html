@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    {% if can_submit %}
+        <div class="row">
+            <div class="col-lg-12">
+                <a href="{{ url_for('note-edit') }}" class="btn btn-primary btn-xs">Добавить заметку</a>
+            </div>
+        </div>
+    {% endif %}
+    <div class="container-fluid notes">
+        {% for note in notes %}
+            <div class="row note">
+                <div class="col-lg-12">
+                    <article>
+                        {{ note.text|default(note.source, True) }}
+                    </article>
+                    {% if can_submit %}
+                        <div class="row note-controls">
+                            <a href="{{ url_for('note-edit-id', note_id=note.id) }}" class="btn btn-default btn-xs">Изменить</a>
+                            <a href="{{ url_for('note-remove', note_id=note.id) }}" class="btn btn-danger btn-xs">Удалить</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row note-links">
+                <div class="col-lg-12 text-center">
+                    <span class="glyphicon glyphicon-link" aria-hidden="true"></span>
+                    <a href="{{ url_for('note-details', note_id=note.id) }}">
+                        {{ note.created_at.strftime("%d.%m.%Y %H:%M") }}
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}
