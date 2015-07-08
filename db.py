@@ -7,6 +7,9 @@ from sqlalchemy.orm import sessionmaker
 from markdown2 import markdown
 from datetime import datetime
 from html import escape
+from pytz import timezone
+
+tzlocal = timezone(app_config.get('app.timezone', 'UTC'))
 
 Base = declarative_base()
 
@@ -30,7 +33,7 @@ class Note(Base):
     def __init__(self, source=None, source_type=None):
         self.source_type = source_type or self.SOURCE_TYPE_PLAINTEXT
         self.text = source
-        self.created_at = datetime.now()
+        self.created_at = datetime.now(tzlocal)
 
     def _update_text(self):
         if self.source is None:

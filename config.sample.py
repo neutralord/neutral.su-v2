@@ -4,6 +4,7 @@ app_config = ConfigDict()
 app_config.load_dict({
     'app': {
         'debug': True,
+        'timezone': 'Europe/Moscow',
         'server': 'tornado',
         'port': 5040,
         'auth': {
