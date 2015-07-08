@@ -1,5 +1,4 @@
 .idea/
-data
 logs
 node_modules
 web/js/jspm_packages
