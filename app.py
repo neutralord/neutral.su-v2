@@ -142,10 +142,14 @@ def note_remove(note_id=None):
     bottle.redirect(bottle.url('note-list'))
 
 debug = app_config.get('app.debug', False)
-run(middleware,
-    host='localhost',
-    port=app_config.get('app.port', 5040),
-    server=app_config.get('app.server', 'wsgiref'),
-    debug=debug,
-    reloader=debug
-    )
+
+if __name__ == '__main__':
+    run(middleware,
+        host='localhost',
+        port=app_config.get('app.port', 5040),
+        server=app_config.get('app.server', 'wsgiref'),
+        debug=debug,
+        reloader=debug
+        )
+else:
+    application = middleware
