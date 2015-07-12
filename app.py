@@ -43,7 +43,7 @@ def index():
     return template('index.html')
 
 
-@route('/who', name='about')
+@route('/me', name='about')
 def who():
     return template('who.html', site_title='О себе')
 
