@@ -14,6 +14,11 @@ app_config.load_dict({
             'path': './data/sqlite.db'
         }
     },
+    'feed': {
+        'author': 'Nikita Dementev',
+        'title': 'Neutral notes',
+        'subtitle': 'О коде и погоде',
+    },
     'deploy': {
         'production': {
             'host': 'admin@example.com',

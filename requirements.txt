@@ -12,6 +12,7 @@ cffi==1.1.2
 ecdsa==0.13
 markdown2==2.3.0
 paramiko==1.15.2
+pyatom==1.4
 pycparser==2.14
 pycrypto==2.6.1
 pytz==2015.4

@@ -1,5 +1,5 @@
 import bottle
-from bottle import request, run, route, get, post, error, TEMPLATE_PATH, jinja2_template, HTTPError
+from bottle import request, response, run, route, get, post, error, TEMPLATE_PATH, jinja2_template, HTTPError
 import functools
 import bcrypt
 from beaker.middleware import SessionMiddleware
@@ -79,18 +79,12 @@ def note_list():
 
 @route('/note/<note_id:int>', name='note-details')
 def note_details(note_id):
-    import re
     s = get_session()
     db_session = Session()
     note = db_session.query(Note).get(note_id)
     if note is None:
         raise HTTPError(404)
-
-    plain_text = re.sub(r'<[^>]+>', '', note.text)
-    pos = max(plain_text.find('\n', 0, 50), 0) or max(plain_text.find(' ', 30), 30)
-    title = plain_text[:pos].replace("\n", " ").strip(' ')
-
-    return template('note/note.html', note=note, can_submit=s.get('authenticated'), site_title=title)
+    return template('note/note.html', note=note, can_submit=s.get('authenticated'), site_title=note.title)
 
 
 @get('/note-edit', name='note-edit')
@@ -140,6 +134,30 @@ def note_remove(note_id=None):
     db_session.delete(note)
     db_session.commit()
     bottle.redirect(bottle.url('note-list'))
+
+
+@get('/atom.xml', name='note-feed')
+def note_feed():
+    from pyatom import AtomFeed
+    site_url = '://'.join(request.urlparts[:2])
+    author = app_config.get('feed.author')
+    db_session = Session()
+    notes = db_session.query(Note).order_by(Note.created_at.desc()).limit(10).all()
+    feed = AtomFeed(title=app_config.get('feed.title'),
+                    subtitle=app_config.get('feed.subtitle'),
+                    feed_url=site_url + app.get_url('note-feed'),
+                    url=site_url + app.get_url('note-list'),
+                    author=author)
+    for note in notes:
+        feed.add(title=note.title,
+                 content=note.text,
+                 content_type="html",
+                 author=author,
+                 url=site_url + app.get_url('note-details', note_id=note.id),
+                 updated=note.created_at)
+    response.add_header('Content-Type', 'application/atom+xml')
+    return feed.to_string()
+
 
 debug = app_config.get('app.debug', False)
 

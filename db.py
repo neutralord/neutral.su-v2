@@ -4,9 +4,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy import Column, Integer, String, Text, DateTime
 from sqlalchemy.orm import sessionmaker
-from markdown2 import markdown
 from datetime import datetime
-from html import escape
 from pytz import timezone
 
 tzlocal = timezone(app_config.get('app.timezone', 'UTC'))
@@ -36,6 +34,9 @@ class Note(Base):
         self.created_at = datetime.now(tzlocal)
 
     def _update_text(self):
+        from markdown2 import markdown
+        from html import escape
+
         if self.source is None:
             return
         if self.source_type == self.SOURCE_TYPE_MARKDOWN:
@@ -62,6 +63,14 @@ class Note(Base):
     def source_type(self, value):
         self._source_type = value
         self._update_text()
+
+    @property
+    def title(self):
+        import re
+        plain_text = re.sub(r'<[^>]+>', '', self.text)
+        pos = max(plain_text.find('\n', 0, 50), 0) or max(plain_text.find(' ', 30), 30)
+        title = plain_text[:pos].replace("\n", " ").strip(' ')
+        return title
 
     def __repr__(self):
         return "<Note (id='%s', type='%s')>" % (self.id, self.source_type)
