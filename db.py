@@ -40,7 +40,7 @@ class Note(Base):
         if self.source is None:
             return
         if self.source_type == self.SOURCE_TYPE_MARKDOWN:
-            self._text = markdown(self.source)
+            self._text = markdown(self.source, extras=['fenced-code-blocks'])
         elif self.source_type == self.SOURCE_TYPE_PLAINTEXT:
             self._text = escape(self.source)
         else:

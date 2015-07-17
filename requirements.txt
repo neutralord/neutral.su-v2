@@ -3,6 +3,7 @@ Fabric==1.10.2
 Jinja2==2.7.3
 Mako==1.0.1
 MarkupSafe==0.23
+Pygments==2.0.2
 SQLAlchemy==1.0.6
 alembic==0.7.6
 bcrypt==2.0.0

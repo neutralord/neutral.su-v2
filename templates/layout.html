@@ -17,6 +17,7 @@
 
     <link href="/css/jumbotron-narrow.css" rel="stylesheet">
     <link href="/css/notes.css" rel="stylesheet">
+    <link href="/css/darcula.css" rel="stylesheet">
     <link rel="alternate" type="application/atom+xml" title="Notes" href="{{ url_for('note-feed') }}" />
   </head>
 
@@ -50,5 +51,22 @@
         </footer>
 
     </div> <!-- /container -->
+    <script>
+        WebFontConfig = {
+            google: { families: [ 'Source+Code+Pro:300,400,500,600:latin' ] }
+        };
+        var loadCodeFont = function() {
+            var wf = document.createElement('script');
+            wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+                '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+            wf.type = 'text/javascript';
+            wf.async = 'true';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wf, s);
+        };
+        if (document.getElementsByTagName('CODE').length) {
+            loadCodeFont();
+        }
+    </script>
 </body>
 </html>

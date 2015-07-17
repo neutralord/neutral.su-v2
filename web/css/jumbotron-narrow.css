@@ -1,7 +1,8 @@
 /* Space out content a bit */
 body {
-  padding-top: 20px;
-  padding-bottom: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #FAFAFA;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -34,7 +35,7 @@ body {
 /* Customize container */
 @media (min-width: 768px) {
   .container {
-    max-width: 730px;
+    max-width: 970px;
   }
 }
 .container-narrow > hr {
@@ -43,8 +44,11 @@ body {
 
 /* Main marketing message and sign up button */
 .jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5;
+    background: url("/1500x500.jpg");
+    background-size: cover;
+    min-height: 214px;
 }
 .jumbotron .btn {
   padding: 14px 24px;
@@ -75,5 +79,12 @@ body {
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {
     border-bottom: 0;
+    height: 236px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .jumbotron {
+    height: 316px;
   }
 }
