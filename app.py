@@ -7,6 +7,8 @@ from beaker.middleware import SessionMiddleware
 from config import app_config
 from db import Note, Session
 
+bottle.BaseRequest.MEMFILE_MAX = 1024 * 1024
+
 session_opts = {
     'session.type': 'file',
     'session.cookie_expires': 3600 * 24,

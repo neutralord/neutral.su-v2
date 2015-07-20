@@ -2,7 +2,15 @@
 body {
     padding-top: 20px;
     padding-bottom: 20px;
-    background-color: #FAFAFA;
+    background-color: #FDFDFD;
+    font-size: 17px;
+    line-height: 24px;
+}
+
+code {
+    color: #2D2D2D;
+    background-color: #FFF7E2;
+    border: 1px solid #F0DDBA;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
