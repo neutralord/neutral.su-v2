@@ -52,10 +52,14 @@
 
     </div> <!-- /container -->
     <script>
+        var fontFamilies = [ 'Roboto:400,500,600:latin,cyrillic' ];
+        if (document.getElementsByTagName('CODE').length) {
+            fontFamilies.push('Source+Code+Pro:400,500:latin');
+        }
         WebFontConfig = {
-            google: { families: [ 'Source+Code+Pro:300,400,500,600:latin' ] }
+            google: { families: fontFamilies }
         };
-        var loadCodeFont = function() {
+        var loadFonts = function() {
             var wf = document.createElement('script');
             wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
                 '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
@@ -64,9 +68,7 @@
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(wf, s);
         };
-        if (document.getElementsByTagName('CODE').length) {
-            loadCodeFont();
-        }
+        loadFonts();
     </script>
     <!-- Google Tag Manager -->
     <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5PZ3K4"
