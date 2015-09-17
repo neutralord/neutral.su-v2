@@ -14,6 +14,10 @@ app_config.load_dict({
             'path': './data/sqlite.db'
         }
     },
+    'blog': {
+        'label': {'read_more': 'Read full article'},
+        'html_parser': 'lxml',  # you must install 'lxml' package or use 'html.parser' instead
+    },
     'feed': {
         'author': 'Nikita Dementev',
         'title': 'Neutral notes',

@@ -39,6 +39,28 @@ blockquote {
     border-color: #ABD496;
 }
 
+.btn.read-more {
+    color: #424242;
+    background-color: #F7F7F7;
+    border-color: #D2D2D2;
+}
+
+.btn.read-more:hover {
+    color: #FFF;
+    background-color: #4C4C4C;
+    border-color: #000;
+}
+
+.btn.read-more span {
+    color: #D2D2D2;
+    top: 2px;
+    left: 4px;
+}
+
+.btn.read-more:hover span {
+    color: #777;
+}
+
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,

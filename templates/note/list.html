@@ -13,7 +13,17 @@
             <div class="row note">
                 <div class="col-lg-12">
                     <article>
-                        {{ note.text|default(note.source, True) }}
+                        {% if note.preview %}
+                            {{ note.preview }}
+                            <p>
+                                <a class="btn read-more" href="{{ url_for('note-details', note_id=note.id) }}">
+                                    {{ note.read_more_label|default(app_config.get('blog.label.read_more'), True) }}
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                </a>
+                            </p>
+                        {% else %}
+                            {{ note.text|default(note.source, True) }}
+                        {% endif %}
                     </article>
                     {% if can_submit %}
                         <div class="row note-controls">

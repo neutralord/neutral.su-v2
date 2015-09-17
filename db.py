@@ -26,6 +26,8 @@ class Note(Base):
     source = Column(Text)
     _source_type = Column('source_type', Integer)
     _text = Column('text', Text)
+    preview = Column(Text)
+    read_more_label = Column(String(255))
     created_at = Column(DateTime)
 
     def __init__(self, source=None, source_type=None):
@@ -34,17 +36,27 @@ class Note(Base):
         self.created_at = datetime.now(tzlocal)
 
     def _update_text(self):
-        from markdown2 import markdown
+        from markdown2 import Markdown
         from html import escape
+        from bs4 import BeautifulSoup
+        import re
 
         if self.source is None:
             return
         if self.source_type == self.SOURCE_TYPE_MARKDOWN:
-            self._text = markdown(self.source, extras=['fenced-code-blocks'])
+            class Converter(Markdown):
+                def postprocess(self, text):
+                    return re.compile(r'^<h1>CUT:?\s*(.*)?</h1>', flags=re.M)\
+                        .sub((lambda m: r'<cut title="%s"/>' % escape(m.group(1))), text) # r'<cut title="\1"/>'
+            self._text = Converter(extras=['fenced-code-blocks']).convert(self.source)
         elif self.source_type == self.SOURCE_TYPE_PLAINTEXT:
             self._text = escape(self.source)
         else:
             self._text = self.source
+        cut = BeautifulSoup(self._text, app_config.get('blog.html_parser')).find('cut')
+        self.preview = cut and ''.join(reversed([str(e) for e in cut.previous_siblings]))
+        self.read_more_label = cut and cut['title'] or None
+        pass
 
     @hybrid_property
     def text(self):

@@ -20,7 +20,12 @@ app = bottle.app()
 middleware = SessionMiddleware(app, session_opts)
 
 template = functools.partial(jinja2_template, template_settings={
-    'globals': {'app': app, 'request': request, 'url_for': app.router.build},
+    'globals': {
+        'app': app,
+        'request': request,
+        'url_for': app.router.build,
+        'app_config': app_config,
+    },
     'extensions': ['jinja2.ext.with_']
 })
 TEMPLATE_PATH.append("./templates")
