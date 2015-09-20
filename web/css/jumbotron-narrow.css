@@ -4,10 +4,10 @@ body {
     padding-bottom: 20px;
     background-color: #FDFDFD;
     font-size: 18px;
-    line-height: 1.6em;
+    line-height: 2em;
     font-family: 'Roboto', sans-serif;
-    letter-spacing: 0.02rem;
-
+    letter-spacing: 0.03rem;
+    word-spacing: 0.16rem;
 }
 
 code {
