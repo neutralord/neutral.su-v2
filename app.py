@@ -3,6 +3,7 @@ from bottle import request, response, run, route, get, post, error, TEMPLATE_PAT
 import functools
 import bcrypt
 from beaker.middleware import SessionMiddleware
+import re
 
 from config import app_config
 from db import Note, Session
@@ -25,6 +26,9 @@ template = functools.partial(jinja2_template, template_settings={
         'request': request,
         'url_for': app.router.build,
         'app_config': app_config,
+    },
+    'filters': {
+        'strip_cut': lambda s: re.sub(r'<cut title="[^"]*"/>', '', s),
     },
     'extensions': ['jinja2.ext.with_']
 })

@@ -47,7 +47,7 @@ class Note(Base):
             class Converter(Markdown):
                 def postprocess(self, text):
                     return re.compile(r'^<h1>CUT:?\s*(.*)?</h1>', flags=re.M)\
-                        .sub((lambda m: r'<cut title="%s"/>' % escape(m.group(1))), text) # r'<cut title="\1"/>'
+                        .sub((lambda m: r'<cut title="%s"/>' % escape(m.group(1))), text)
             self._text = Converter(extras=['fenced-code-blocks']).convert(self.source)
         elif self.source_type == self.SOURCE_TYPE_PLAINTEXT:
             self._text = escape(self.source)
