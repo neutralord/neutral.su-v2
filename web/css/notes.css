@@ -15,3 +15,7 @@
 .note blockquote {
     font-size: inherit;
 }
+
+.note img {
+    max-width: 100%;
+}
