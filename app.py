@@ -28,7 +28,7 @@ template = functools.partial(jinja2_template, template_settings={
         'app_config': app_config,
     },
     'filters': {
-        'strip_cut': lambda s: re.sub(r'<cut title="[^"]*"/>', '', s),
+        'strip_cut': lambda s: re.sub(r'<cut title="[^"]*"/>', '<span id="cut"></span>', s),
     },
     'extensions': ['jinja2.ext.with_']
 })

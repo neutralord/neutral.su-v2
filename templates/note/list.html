@@ -16,7 +16,7 @@
                         {% if note.preview %}
                             {{ note.preview }}
                             <p>
-                                <a class="btn read-more" href="{{ url_for('note-details', note_id=note.id) }}">
+                                <a class="btn read-more" href="{{ url_for('note-details', note_id=note.id) ~ '#cut' }}">
                                     {{ note.read_more_label|default(app_config.get('blog.label.read_more'), True) }}
                                     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                                 </a>
