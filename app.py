@@ -20,6 +20,8 @@ session_opts = {
 app = bottle.app()
 middleware = SessionMiddleware(app, session_opts)
 
+strip_cut = lambda s: re.sub(r'<cut title="[^"]*"/>', '<span id="cut"></span>', s)
+
 template = functools.partial(jinja2_template, template_settings={
     'globals': {
         'app': app,
@@ -28,7 +30,7 @@ template = functools.partial(jinja2_template, template_settings={
         'app_config': app_config,
     },
     'filters': {
-        'strip_cut': lambda s: re.sub(r'<cut title="[^"]*"/>', '<span id="cut"></span>', s),
+        'strip_cut': strip_cut,
     },
     'extensions': ['jinja2.ext.with_']
 })
@@ -161,7 +163,7 @@ def note_feed():
                     author=author)
     for note in notes:
         feed.add(title=note.title,
-                 content=note.text,
+                 content=strip_cut(note.text),
                  content_type="html",
                  author=author,
                  url=site_url + app.get_url('note-details', note_id=note.id),
