@@ -4,7 +4,7 @@ body {
     padding-bottom: 20px;
     background-color: #FDFDFD;
     font-size: 17px;
-    line-height: 2em;
+    line-height: 1.5em;
     font-family: 'Roboto', sans-serif;
     letter-spacing: 0.04rem;
     word-spacing: 0.2rem;
@@ -33,9 +33,17 @@ code {
     margin-bottom: 15px;
 }
 
+p {
+    margin-bottom: 30px;
+}
+
 b, strong {
     letter-spacing: 0.08rem;
     font-weight: 400;
+}
+
+li {
+    margin-bottom: 8px;
 }
 
 blockquote {
