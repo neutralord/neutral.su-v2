@@ -6,7 +6,7 @@
     height: 15px;
     width: 266px;
     display: block;
-    background-image: url("/build/img/horizontal-delimiter.png");
+    background-image: url("/horizontal-delimiter.png");
     position: relative;
     left: 50%;
     margin-left: -133px;

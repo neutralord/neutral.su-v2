@@ -2,14 +2,15 @@
 body {
     padding-top: 20px;
     padding-bottom: 20px;
-    background-color: #FDFDFD;
+    /*background-color: #FDFDFD;*/
+    background-image: url("/noise.jpg");
     font-size: 17px;
     line-height: 1.5em;
     font-family: 'Roboto', sans-serif;
     letter-spacing: 0.04rem;
     word-spacing: 0.2rem;
-    font-weight: 300;
-    color: #0C0C0C;
+    font-weight: 400;
+    color: #363636;
 }
 
 code {
@@ -39,7 +40,7 @@ p {
 
 b, strong {
     letter-spacing: 0.08rem;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 li {
