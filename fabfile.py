@@ -19,7 +19,7 @@ def deploy():
 
 
 def restart():
-    run('sudo service neutral-su-www restart')
+    run('sudo supervisorctl restart neutral-su-www')
 
 
 def db_upgrade():
