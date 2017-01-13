@@ -1,0 +1,125 @@
+.codehilite code {
+    border: none;
+}
+
+.codehilite pre {
+    background-color: #202020;
+    color: #c8d6e6;
+    font-family: "Source Code Pro", Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: initial;
+    border-color: #666;
+    letter-spacing: normal;
+}
+.codehilite .c,
+.codehilite .cm,
+.codehilite .c1 {
+  color: #a4a4a4;
+}
+
+.codehilite .k,
+.codehilite .bp,
+.codehilite .cp,
+.codehilite .cs,
+.codehilite .gh {
+  color: #ec9757;
+}
+.codehilite .cp,
+.codehilite .cs {
+  font-weight: bold;
+}
+.codehilite .cs {
+  font-style: italic;
+}
+.codehilite .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.codehilite .gd .x {
+  background-color: #ffaaaa;
+}
+.codehilite .ge {
+  font-style: italic;
+}
+.codehilite .gr,
+.codehilite .gt {
+  color: #aa0000;
+}
+.codehilite .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.codehilite .gi .x {
+  background-color: #aaffaa;
+}
+.codehilite .go {
+  color: #888888;
+}
+.codehilite .nd {
+  color: #bbb529;
+}
+.codehilite .gs {
+  font-weight: bold;
+}
+.codehilite .gu {
+  color: #aaaaaa;
+}
+.codehilite .kc,
+.codehilite .kd,
+.codehilite .kp,
+.codehilite .kr,
+.codehilite .kt,
+.codehilite .kn {
+    font-weight: bold;
+    color: #d87f32;
+}
+.codehilite .na {
+  color: #FFC66D;
+}
+.codehilite .no,
+.codehilite .ni,
+.codehilite .nv,
+.codehilite .vc,
+.codehilite .vg,
+.codehilite .vi {
+  color: #9876aa;
+}
+.codehilite .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.codehilite .nt {
+  color: #ffc66d;
+}
+.codehilite .ow {
+    color: #cc782f;
+    font-weight: bold;
+}
+.codehilite .w {
+  color: #bbbbbb;
+}
+.codehilite .m,
+.codehilite .mf,
+.codehilite .mh,
+.codehilite .mi,
+.codehilite .mo,
+.codehilite .il {
+  color: #6897bb;
+}
+.codehilite .s,
+.codehilite .sb,
+.codehilite .s1,
+.codehilite .sx,
+.codehilite .si,
+.codehilite .sh,
+.codehilite .se,
+.codehilite .s2,
+.codehilite .sd,
+.codehilite .sc {
+  color: #0ca436;
+}
+.codehilite .sr,
+.codehilite .ss {
+  color: #6a8759;
+}
