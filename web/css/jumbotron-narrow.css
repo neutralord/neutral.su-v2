@@ -19,14 +19,15 @@ code {
     border: 1px solid #F0DDBA;
     font-family: "Source Code Pro", Menlo, Monaco, Consolas, "Courier New", monospace;
     font-weight: 400;
+    font-size: 80%;
     letter-spacing: normal;
 }
 
-.h2, h2 {
+.h2:not(:first-child), h2:not(:first-child) {
     margin-top: 50px;
 }
 
-.h3, h3 {
+.h3:not(:first-child), h3:not(:first-child) {
     margin-top: 30px;
 }
 
@@ -34,8 +35,28 @@ code {
     margin-bottom: 15px;
 }
 
-p {
+.h1 > a, .h2 > a, .h3 > a, h1 > a, h2 > a, h3 > a {
+    color: inherit;
+}
+
+.h1 > a:hover, .h2 > a:hover, .h3 > a:hover, h1 > a:hover, h2 > a:hover, h3 > a:hover {
+    color: inherit;
+}
+
+article p, .article p,
+article ul, .article ul {
     margin-bottom: 30px;
+    font-size: 20px;
+    line-height: 1.5em;
+    font-family: "Gentium Basic", Georgia, "Times New Roman", Times, serif;
+}
+
+article p:first-child, .article p:first-child {
+    margin-top: 15px;
+}
+
+article p:last-child, .article p:last-child {
+    margin-bottom: 0;
 }
 
 b, strong {
@@ -55,6 +76,7 @@ blockquote {
     color: #424242;
     background-color: #F7F7F7;
     border-color: #D2D2D2;
+    font-family: 'Roboto', sans-serif;
 }
 
 .btn.read-more:hover {
@@ -96,6 +118,7 @@ blockquote {
 /* Custom page footer */
 .footer {
   padding-top: 19px;
+  margin-top: 30px;
   color: #777;
   border-top: 1px solid #e5e5e5;
 }

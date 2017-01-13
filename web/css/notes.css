@@ -12,10 +12,18 @@
     margin-left: -133px;
 }
 
+.note-links:not(:last-child) > div {
+    margin: 0 0 24px 0;
+}
+
 .note blockquote {
     font-size: inherit;
 }
 
 .note img {
     max-width: 100%;
+}
+
+.note .timestamp {
+    margin-top: 10px;
 }
