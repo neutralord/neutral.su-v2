@@ -20,7 +20,14 @@ session_opts = {
 app = bottle.app()
 middleware = SessionMiddleware(app, session_opts)
 
-strip_cut = lambda s: re.sub(r'<cut title="[^"]*"/>', '<span id="cut"></span>', s)
+
+def strip_cut(s):
+    return re.sub(r'<cut title="[^"]*"/>', '<span id="cut"></span>', s)
+
+
+def header_into_link(s, note_id):
+    url = app.router.build('note-details', note_id=note_id)
+    return re.sub(r'(<h[12]>)([^<]+)<', r'\g<1><a href="' + url + '">\g<2></a><', s, 1)
 
 template = functools.partial(jinja2_template, template_settings={
     'globals': {
@@ -31,6 +38,7 @@ template = functools.partial(jinja2_template, template_settings={
     },
     'filters': {
         'strip_cut': strip_cut,
+        'header_into_link': header_into_link
     },
     'extensions': ['jinja2.ext.with_']
 })
