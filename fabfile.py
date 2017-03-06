@@ -1,4 +1,4 @@
-from fabric.api import env, run, local, cd
+from fabric.api import env, run, local, cd, shell_env
 from config import app_config
 
 

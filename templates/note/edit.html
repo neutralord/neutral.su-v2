@@ -17,6 +17,11 @@
                 </label>
             </div>
         {% endfor %}
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" name="is_draft" {{ 'checked' if note.is_draft }}> Is draft (hidden)
+            </label>
+        </div>
         <button type="submit" class="btn btn-default">Submit</button>
     </form>
 {% endblock content %}

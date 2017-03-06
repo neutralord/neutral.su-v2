@@ -133,13 +133,15 @@ def note_save(note_id=None):
         bottle.redirect(bottle.url('login'))
     note_source = post_get('source')
     source_type = int(post_get('source_type', Note.SOURCE_TYPE_PLAINTEXT))
+    is_draft = bool(post_get('is_draft', False))
     db_session = Session()
     if note_id is not None:
         note = db_session.query(Note).get(note_id)
         note.source_type = source_type
+        note.is_draft = is_draft
         note.text = note_source
     else:
-        note = Note(source=note_source, source_type=source_type)
+        note = Note(source=note_source, source_type=source_type, is_draft=is_draft)
         db_session.add(note)
     db_session.commit()
     bottle.redirect(bottle.url('note-list'))
@@ -169,7 +171,7 @@ def note_feed():
                     feed_url=site_url + app.get_url('note-feed'),
                     url=site_url + app.get_url('note-list'),
                     author=author)
-    for note in notes:
+    for note in [n for n in notes if not n.is_draft]:
         feed.add(title=note.title,
                  content=strip_cut(note.text),
                  content_type="html",

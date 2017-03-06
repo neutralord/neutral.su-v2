@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 from config import app_config
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.ext.hybrid import hybrid_property
-from sqlalchemy import Column, Integer, String, Text, DateTime
+from sqlalchemy import Column, Integer, String, Text, DateTime, Boolean
 from sqlalchemy.orm import sessionmaker
 from datetime import datetime
 from pytz import timezone
@@ -29,11 +29,13 @@ class Note(Base):
     preview = Column(Text)
     read_more_label = Column(String(255))
     created_at = Column(DateTime)
+    is_draft = Column(Boolean)
 
-    def __init__(self, source=None, source_type=None):
+    def __init__(self, source=None, source_type=None, is_draft=True):
         self.source_type = source_type or self.SOURCE_TYPE_PLAINTEXT
         self.text = source
         self.created_at = datetime.now(tzlocal)
+        self.is_draft = is_draft
 
     def _update_text(self):
         from markdown2 import Markdown
