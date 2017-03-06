@@ -11,6 +11,7 @@
     line-height: initial;
     border-color: #666;
     letter-spacing: normal;
+    opacity: 0.9;
 }
 .codehilite .c,
 .codehilite .cm,
@@ -23,7 +24,8 @@
 .codehilite .cp,
 .codehilite .cs,
 .codehilite .gh {
-  color: #ec9757;
+  color: #d37127;
+  font-weight: bold;
 }
 .codehilite .cp,
 .codehilite .cs {
@@ -57,7 +59,7 @@
   color: #888888;
 }
 .codehilite .nd {
-  color: #bbb529;
+  color: #e0d41e;
 }
 .codehilite .gs {
   font-weight: bold;
@@ -117,7 +119,7 @@
 .codehilite .s2,
 .codehilite .sd,
 .codehilite .sc {
-  color: #0ca436;
+  color: #34aa80;
 }
 .codehilite .sr,
 .codehilite .ss {
